@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container, } from 'react-bootstrap';
 import {
   LineChart,
   Line,
@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ReferenceLine,
   ResponsiveContainer,
 } from 'recharts';
 
@@ -21,7 +20,7 @@ export default class Chart extends PureComponent {
     const newPropertyArray = propertyNames.slice(2);
     return(
       newPropertyArray.map((item) =>(
-        <Line type="monotone" dataKey={item} stroke={'#' + Math.floor(Math.random()*16777215).toString(16)} />
+        <Line type="monotone" dataKey={item} key = {item} stroke={'#' + Math.floor(Math.random()*16777215).toString(16)} />
       ))
     )
 

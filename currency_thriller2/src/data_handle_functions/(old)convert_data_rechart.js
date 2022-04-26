@@ -1,4 +1,4 @@
-
+// old func
 function ConvertDataToRechart(dataArray) {
   // structure of argument object                                             structure of return object
   // let dataArray = {                                                        convertedDataArray = [
@@ -43,7 +43,7 @@ function ConvertDataToRechart(dataArray) {
       //console.log(tempData);
       dataForChart.push(Object.assign({},tempData));
 
-      //console.log(dataForChart);
+      console.log(dataForChart);
       temp.length = 0;
 
     }

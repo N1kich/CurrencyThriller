@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row , Carousel, Button, Col, Table } from 'react-bootstrap';
+import {  Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -11,9 +11,10 @@ export default class TableComponent extends Component {
   }
 
   tdElement(dataArray) {
+    let index = 0;
     return(
 
-        dataArray.map((item) => (<td>{item}</td>))
+        dataArray.map((item) => (<td key= {index++}>{item}</td>))
     )
   }
 
@@ -22,9 +23,9 @@ export default class TableComponent extends Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>{this.props.tableHeader.headers}</th>
-              {this.props.tableHeader.dateTimeHeader.map((item)=>(
-                <th>{item}</th>
+              <th>Currency Names</th>
+              {this.props.dataArray.dateTime.map((item)=>(
+                <th key ={item}>{item}</th>
               ))}
             </tr>
           </thead>

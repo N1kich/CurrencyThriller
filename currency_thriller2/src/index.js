@@ -1,57 +1,37 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import aboutUs_logo from './media_sources/aboutUs.png'
+import c_t_img from './media_sources/currencyChecker.png'
+import calculator_logo from './media_sources/calculator-img.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationMenuBar from './frontend_components/NavigationMenuBar';
-import CarouselComponent from './frontend_components/CarouselComponent';
+import CarouselAboutUs from './frontend_components/CarouselAboutUs_Item';
+import CarouselCC from './frontend_components/CarouselCC_Item';
 import CurrencyChecker from './frontend_components/CurrencyChecker';
 import CurrencyCalculator from './frontend_components/CurrencyCalculator'
-import ConvertDataToRechart from './data_handle_functions/convert_data_rechart'
+import { Carousel,} from 'react-bootstrap';
+import convertData from './data_handle_functions/convertData'
 
+let carouselCheckerData = {
+  timeout : 5000,
+  name : 'CurrencyChecker',
+  description : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt at eligendi dolore, commodi sapiente mollitia veniam ullam accusamus, soluta illo, corporis accusantium. Molestias nobis cumque est odit esse obcaecati impedit?',
+  image : c_t_img,
+  btnName: 'Launch Checker',
+  width : 530,
+  height : 600
+}
 
-// const dataForChart = [
-//   {
-//     name: 'Page A',
-//     uv: 4000,
-//     pv: 2400,
-//     amt: 123215415123,
-//   },
-//   {
-//     name: 'Page B',
-//     uv: 3000,
-//     pv: 1398,
-//     amt: 2210,
-//   },
-//   {
-//     name: 'Page C',
-//     uv: 2000,
-//     pv: 9800,
-//     amt: 2290,
-//   },
-//   {
-//     name: 'Page D',
-//     uv: 2780,
-//     pv: 3908,
-//     amt: 2000,
-//   },
-//   {
-//     name: 'Page E',
-//     uv: 1890,
-//     pv: 4800,
-//     amt: 2181,
-//   },
-//   {
-//     name: 'Page F',
-//     uv: 2390,
-//     pv: 3800,
-//     amt: 2500,
-//   },
-//   {
-//     name: 'Page G',
-//     uv: 3490,
-//     pv: 4300,
-//     amt: 2100,
-//   },
-// ];
+let carouselCalculatorData = {
+  timeout : 5000,
+  name: 'CurrencyCalculator',
+  description : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt at eligendi dolore, commodi sapiente mollitia veniam ullam accusamus, soluta illo, corporis accusantium. Molestias nobis cumque est odit esse obcaecati impedit?',
+  image : calculator_logo,
+  btnName: 'Launch Calculator',
+  width : 470,
+  height : 600
+}
+
 
 let dataArray = {
 
@@ -63,13 +43,6 @@ let dataArray = {
   gbpValue: ['GBP', 30, 99, 50, 65, 70],
 }
 
-let tableHeader = {
-  headers : ['CurrencyName'],
-  dateTimeHeader : dataArray.dateTime,
-}
-
-
-
 class TestCase extends React.Component {
 
   render(){
@@ -80,13 +53,34 @@ class TestCase extends React.Component {
           <NavigationMenuBar background = 'dark' variant = 'dark' />
         </div>
         <div>
-          <CarouselComponent />
+          <Carousel variant = 'dark'>
+
+            <CarouselAboutUs timeout = {5000} about_us = {aboutUs_logo} />
+
+            <CarouselCC timeout = {carouselCheckerData.timeout}
+                        name = {carouselCheckerData.name}
+                        image = {carouselCheckerData.image}
+                        description = {carouselCheckerData.description}
+                        btn_name ={carouselCheckerData.btnName}
+                        height = {carouselCheckerData.height}
+                        width = {carouselCheckerData.width}
+                        />
+
+            <CarouselCC timeout = {carouselCalculatorData.timeout}
+                        name = {carouselCalculatorData.name}
+                        image = {carouselCalculatorData.image}
+                        description = {carouselCalculatorData.description}
+                        btn_name ={carouselCalculatorData.btnName}
+                        height = {carouselCalculatorData.height}
+                        width = {carouselCalculatorData.width} />
+
+          </Carousel>
         </div>
         <div>
-          <CurrencyChecker dataArray = {dataArray} tableHeader = {tableHeader}/>
+          <CurrencyChecker dataArray = {dataArray} />
         </div>
         <div>
-          <CurrencyCalculator usdValue = '856' />
+          <CurrencyCalculator  dataObject = {convertData(dataArray, false)[0]} />
         </div>
       </>
     );

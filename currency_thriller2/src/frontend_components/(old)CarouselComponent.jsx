@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import aboutUs_logo from '../media_sources/aboutUs.png'
 import c_t_img from '../media_sources/currencyChecker.png'
 import calculator_logo from '../media_sources/calculator-img.png'
-import { Container, Row , Carousel, Button, Col, Grid } from 'react-bootstrap';
+import { Container, Row , Carousel, Button, Col,} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import CurrencyChecker from './CurrencyChecker';
 
 export default class CarouselComponent extends Component {
   render() {
